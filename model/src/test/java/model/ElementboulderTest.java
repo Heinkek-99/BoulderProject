@@ -47,14 +47,13 @@ public class ElementboulderTest {
 	 */
 	@Test
 	public void testGetMapHeight() throws IOException {
-/*		int height = 28;
+		int height = 48;
 		try {
 			assertEquals(height, Elementboulder.getMapById(1));
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}*/
 	}
 	
 }
