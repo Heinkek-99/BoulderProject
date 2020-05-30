@@ -1,85 +1,70 @@
 package model;
 
+import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Observable;
+import java.util.ArrayList;
 
-import contract.IModel;
-import entity.HelloWorld;
+import model.element.mobile.Character;
 
 /**
  * The Class Model.
  *
  * @author Jean-Aymeric Diet
  */
-public final class Model extends Observable implements IModel {
+public final class Model implements IModel {
 
-	/** The helloWorld. */
-	private HelloWorld helloWorld;
+	
+	private IMap map;
+	
+	private Character character;
 
-	/**
-	 * Instantiates a new model.
-	 */
-	public Model() {
-		this.helloWorld = new HelloWorld();
+	
+	public Model(final int mapID) throws SQLException, IOException {
+		super();
+		Sprite.loadBuffers();
+		this.setMap(Elementboulder.getMapById(mapID));
+		this.setCharacter(new Character(1, 1, this.getMap()));
+	}
+	
+	@Override
+	public IMap getMap() {
+		return this.map;
 	}
 
-	/**
-     * Gets the hello world.
-     *
-     * @return the hello world
-     */
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IModel#getMessage()
-	 */
-	public HelloWorld getHelloWorld() {
-		return this.helloWorld;
-	}
 
-	/**
-     * Sets the hello world.
-     *
-     * @param helloWorld
-     *            the new hello world
-     */
-	private void setHelloWorld(final HelloWorld helloWorld) {
-		this.helloWorld = helloWorld;
-		this.setChanged();
-		this.notifyObservers();
-	}
-
-	/**
-     * Load hello world.
-     *
-     * @param code
-     *            the code
-     */
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IModel#getMessage(java.lang.String)
-	 */
-	public void loadHelloWorld(final String code) {
-		try {
-			final DAOHelloWorld daoHelloWorld = new DAOHelloWorld(DBConnection.getInstance().getConnection());
-			this.setHelloWorld(daoHelloWorld.find(code));
-		} catch (final SQLException e) {
-			e.printStackTrace();
+	@Override
+	public void movePawns() {
+ArrayList<IMobile> copyPawns = new ArrayList<>(this.getMap().getPawns());
+		
+		for (IMobile pawn : copyPawns) {
+			pawn.followMyStrategy();
 		}
+
+	if (this.getCharacter().isCrushed())
+			this.getCharacter().die();
+	
 	}
 
 	/**
-     * Gets the observable.
-     *
-     * @return the observable
-     */
-	/*
-	 * (non-Javadoc)
-	 *
-	 * @see contract.IModel#getObservable()
+	 * @param map the map to set
 	 */
-	public Observable getObservable() {
-		return this;
+	public void setMap(IMap map) {
+		this.map = map;
 	}
+
+	/**
+	 * @return the character
+	 */
+	public Character getCharacter() {
+		return this.character;
+	}
+
+	/**
+	 * @param character the character to set
+	 */
+	public void setCharacter(Character character) {
+		this.character = character;
+	}
+
+	
 }

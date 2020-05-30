@@ -4,8 +4,14 @@
  */
 package main;
 
-import contract.ControllerOrder;
+import java.io.IOException;
+import java.sql.SQLException;
+
+import javax.swing.JOptionPane;
+
 import controller.Controller;
+import controller.IController;
+import model.IModel;
 import model.Model;
 import view.View;
 
@@ -22,13 +28,21 @@ public abstract class Main {
      * @param args
      *            the arguments
      */
-    public static void main(final String[] args) {
-        final Model model = new Model();
-        final View view = new View(model);
-        final Controller controller = new Controller(view, model);
-        view.setController(controller);
+	 public static void main(final String[] args) throws SQLException, IOException {
+	    	
+	    	String idToAsk= JOptionPane.showInputDialog("Hello ! Please input id of the map : ", 1);
+	        int idAsked = Integer.parseInt(idToAsk);
+	        
+	    	final IModel model = new Model(idAsked);
+	    	final View view = new View(model.getMap(), model.getCharacter(), model.getMap().getPawns());
+	        final IController controller = new Controller(view, model);
+	        view.setOrderPerformer(controller.getOrderPeformer());
 
-        controller.control();
-        controller.orderPerform(ControllerOrder.English);
-    }
+	        try {
+	            controller.start();
+	        } catch (InterruptedException e) {
+	        	System.out.println(e.getMessage());
+				e.printStackTrace();
+			}
+	    }
 }

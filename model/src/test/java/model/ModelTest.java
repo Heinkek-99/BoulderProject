@@ -1,53 +1,78 @@
 /**
- * @author Jean-Aymeric DIET jadiet@cesi.fr
- * @version 1.0
+ * 
  */
 package model;
 
+
+import static org.junit.Assert.assertEquals;
+
 import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import model.element.Map;
+
+/**
+ * @author nodji
+ *
+ */
 public class ModelTest {
-    private Model model;
+private Map map;
+	
+	//private IMobile character;
+	
+	//private Model model;
 
-    @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
-    }
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+	}
 
-    @AfterClass
-    public static void tearDownAfterClass() throws Exception {
-    }
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@Before
+	public void setUp() throws Exception {
+		//model = new Model(1);
+	}
 
-    @Before
-    public void setUp() throws Exception {
-        this.model = new Model();
-    }
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@After
+	public void tearDown() throws Exception {
+	}
 
-    @After
-    public void tearDown() throws Exception {
-    }
+	/**
+	 * Test method for {@link model.Model#getMap()}.
+	 */
 
-    @Test
-    public void testGetMessage() {
-        Assert.assertEquals("", this.model.getHelloWorld().getMessage());
-    }
+	@Test
+	public void test() {
+	//	fail("Not yet implemented");
+	}
+	
+/*	@Test
+	public void testGetMap() {
+		Map expected = map;
+		// fail("Not yet implemented");
+		assertEquals(expected, this.map.getPawns());
+	}
+*/
 
-    /**
-     * Test method for {@link model.Model#loadHelloWorld(java.lang.String)}.
-     */
-    @Test
-    public void testGetMessageString() {
-        this.model.loadHelloWorld("GB");
-        Assert.assertEquals("Hello world", this.model.getHelloWorld().getMessage());
-        this.model.loadHelloWorld("FR");
-        Assert.assertEquals("Bonjour le monde", this.model.getHelloWorld().getMessage());
-        this.model.loadHelloWorld("DE");
-        Assert.assertEquals("Hallo Welt", this.model.getHelloWorld().getMessage());
-        this.model.loadHelloWorld("ID");
-        Assert.assertEquals("Salamat pagi dunia", this.model.getHelloWorld().getMessage());
-    }
+	/**
+	 * Test method for {@link model.Model#setCharacter(contract.IMotionFullElement)}.
+	 */
+	/*@Test
+	public void testSetCharacter() {
+		IMobile expected = character;
+		//	fail("Not yet implemented");
+		assertEquals(expected, model.getCharacter());	
+		//assertEquals(expected, model.getCharacter());
+	}
+*/
+	
 }

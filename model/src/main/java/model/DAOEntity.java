@@ -1,6 +1,7 @@
 package model;
 
-import java.sql.Connection;
+import java.sql.CallableStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import entity.Entity;
@@ -16,7 +17,7 @@ import entity.Entity;
 abstract class DAOEntity<E extends Entity> {
 
 	/** The connection. */
-	private final Connection connection;
+//	private final Connection connection;
 
 	/**
 	 * Instantiates a new DAO entity.
@@ -26,19 +27,44 @@ abstract class DAOEntity<E extends Entity> {
 	 * @throws SQLException
 	 *           the SQL exception
 	 */
-	public DAOEntity(final Connection connection) throws SQLException {
+	/*public DAOEntity(final Connection connection) throws SQLException {
 		this.connection = connection;
-	}
+	}*/
 
+    protected static ResultSet executeQuery(final String query) {
+        return BoulderConnection.getInstance().executeQuery(query);
+    }
+
+    /**
+     * Execute update.
+     *
+     * @param query
+     *            the query
+     * @return the int
+     */
+    protected static int executeUpdate(final String query) {
+        return BoulderConnection.getInstance().executeUpdate(query);
+    }
+
+    /**
+     * Prepare call.
+     *
+     * @param query
+     *            the query
+     * @return the callable statement
+     */
+    protected static CallableStatement prepareCall(final String query) {
+        return BoulderConnection.getInstance().prepareCall(query);
+    }
 	/**
 	 * Gets the connection.
 	 *
 	 * @return the connection
 	 */
-	protected Connection getConnection() {
+/*	protected Connection getConnection() {
 		return this.connection;
 	}
-
+*/
 	/**
 	 * Creates the.
 	 *
@@ -46,7 +72,7 @@ abstract class DAOEntity<E extends Entity> {
 	 *          the entity
 	 * @return true, if successful
 	 */
-	public abstract boolean create(E entity);
+/*	public abstract boolean create(E entity);
 
 	/**
 	 * Delete.
@@ -55,7 +81,7 @@ abstract class DAOEntity<E extends Entity> {
 	 *          the entity
 	 * @return true, if successful
 	 */
-	public abstract boolean delete(E entity);
+/*	public abstract boolean delete(E entity);
 
 	/**
 	 * Update.
@@ -64,7 +90,7 @@ abstract class DAOEntity<E extends Entity> {
 	 *          the entity
 	 * @return true, if successful
 	 */
-	public abstract boolean update(E entity);
+//	public abstract boolean update(E entity);
 
 	/**
 	 * Find.
@@ -73,7 +99,7 @@ abstract class DAOEntity<E extends Entity> {
 	 *          the id
 	 * @return the e
 	 */
-	public abstract E find(int id);
+	//public abstract E find(int id);
 
 	/**
 	 * Find.
@@ -82,6 +108,6 @@ abstract class DAOEntity<E extends Entity> {
 	 *          the code
 	 * @return the e
 	 */
-	public abstract E find(String code);
+//	public abstract E find(String code);
 
 }
