@@ -57,7 +57,7 @@ public class Elementboulder extends DAOEntity {
 	/**Callable statement used to save a whole line map*/
 	//public static String saveMap = "{call saveMap(?,?)}";
 	
-	private static int idColumnIndex = 1;
+	//private static int idColumnIndex = 1;
 
 	private static int widthColumnIndex = 2;
 
