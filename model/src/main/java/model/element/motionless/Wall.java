@@ -14,7 +14,7 @@ import model.Sprite;
  */
 public class Wall extends MotionlessElement{
 
-	private static final Sprite sprite = new Sprite('|', Sprite.mapTileSet, new Rectangle(0, 0, 16, 16));
+	private static final Sprite sprite = new Sprite('#', Sprite.mapTileSet, new Rectangle(0, 0, 16, 16));
 
 	public Wall() {
 		super(sprite, Permeability.BLOCKING);

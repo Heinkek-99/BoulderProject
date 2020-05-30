@@ -4,21 +4,17 @@
 package model;
 
 
-import static org.junit.Assert.assertEquals;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import model.element.Map;
 
 /**
  * @author nodji
  *
  */
 public class ModelTest {
-private Map map;
+//private Map map;
 	
 	//private IMobile character;
 	

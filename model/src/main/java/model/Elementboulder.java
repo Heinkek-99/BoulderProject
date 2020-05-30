@@ -2,7 +2,6 @@ package model;
 
 import java.io.IOException;
 import java.sql.CallableStatement;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -18,11 +17,6 @@ import model.element.mobile.Rock;
  * @author Jean-Aymeric Diet
  */
 public class Elementboulder extends DAOEntity {
-	public Elementboulder(Connection connection) throws SQLException {
-	// TODO Auto-generated constructor stub
-		
-	}
-
 
 	/**The char array which constitute the map*/
 //	char[][] map;
@@ -30,33 +24,6 @@ public class Elementboulder extends DAOEntity {
 	/** The sql map by id. */
 	private static String sqlMapById = "{call getMapByID(?)}";
 
-	/**Callable statement used to save the size of the map*/
-	//public static String saveMapSize = "{call saveMapSize(?,?,?}";
-	
-	/**Callable statement used to save an element of the map at given coordinates*/
-//	public static String saveMapElement = "{call saveMapElement(?,?,?,?)";
-	
-	/**Callable statement used to get the height of the map*/
-	//public static String mapHeightQuerry = "{call getMapHeight(?)}";
-	
-	/**Callable statement used to get the width of the map*/
-//	public static String mapWidthQuerry = "{call getMapWidth(?)}";
-	
-	/**Callable statement used to get an element of the map at given coordinates*/
-	//public static String getMap = "{call getElement(?,?,?)}";
-
-	/**Callable statement used to get an element of the map at given coordinates*/
-//	public static String getMap2 = "{call getMap(?)}";
-	
-	/**Callable statement used to get a whole line map*/
-	//public static String getLine = "{call getLine(?,?)}";
-	
-	/**Callable statement used to save a whole line map*/
-	//public static String saveLine = "{call saveLine(?,?)}";
-	
-	/**Callable statement used to save a whole line map*/
-	//public static String saveMap = "{call saveMap(?,?)}";
-	
 	//private static int idColumnIndex = 1;
 
 	private static int widthColumnIndex = 2;
@@ -78,13 +45,16 @@ public class Elementboulder extends DAOEntity {
 			if (result.first()) {
 				width = result.getInt(widthColumnIndex);
 				height = result.getInt(heightColumnIndex);
-				try{
-					Elementboulder.testCorrectLevel(width, height, result.getString(mapColumnIndex));
-				}
-				catch(Exception e){
-					System.out.println(e.getMessage());
-					System.exit(0);
-				}
+				
+					try {
+						Elementboulder.testCorrectLevel(width, height, result.getString(mapColumnIndex));
+						
+					} catch (Exception e) {
+						System.out.println(e.getMessage());
+						System.exit(0);
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}	
 				tempMap = new Map(width, height, new IElement[width][height]);
 
 				Elementboulder.placePawnsOnMap(result, tempMap, width);
@@ -120,10 +90,10 @@ public class Elementboulder extends DAOEntity {
 				// (boulder, diamond..)
 				if (c == 'O')
 					tempMap.addPawn(new Rock(currentXToWrite, currentYToWrite, tempMap));
-				else if (c == 'D') {
+				else if (c == 'V') {
 					tempMap.addPawn(new Diamond(currentXToWrite, currentYToWrite, tempMap));
 					tempMap.addDiamondCount();
-				} else if (c == 'E') {
+				} else if (c == 'M') {
 
 					tempMap.addPawn(new Monster(currentXToWrite, currentYToWrite, tempMap));
 				}

@@ -36,7 +36,7 @@ final class BoulderConnection {
 	 */
 	public static synchronized BoulderConnection getInstance() {
 		if (BoulderConnection.INSTANCE == null) {
-			BoulderConnection.INSTANCE = new BoulderConnection();
+            setInstance(new BoulderConnection());
 		}
 		return BoulderConnection.INSTANCE;
 	}

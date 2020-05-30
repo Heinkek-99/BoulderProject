@@ -22,7 +22,7 @@ import model.element.strategy.RandomMonsterStrategy;
  */
 public class Monster extends Mobile{
 
-	private static final Sprite sprite = new Sprite('E', Sprite.mapTileSet, new Rectangle(144, 16, 16, 16));
+	private static final Sprite sprite = new Sprite('M', Sprite.mapTileSet, new Rectangle(144, 16, 16, 16));
 	
 	private static final IStrategy randomStrategy = new RandomMonsterStrategy();
 	

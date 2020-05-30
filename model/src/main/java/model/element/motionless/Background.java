@@ -14,7 +14,7 @@ import model.Sprite;
  */
 public class Background extends MotionlessElement{
 	
-	private static final Sprite sprite = new Sprite('_', Sprite.mapTileSet, new Rectangle(32, 0, 16, 16));
+	private static final Sprite sprite = new Sprite(' ', Sprite.mapTileSet, new Rectangle(32, 0, 16, 16));
 
 	public Background() {
 		super(sprite, Permeability.PENETRABLE);

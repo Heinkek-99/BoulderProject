@@ -1,6 +1,5 @@
 /**
- * @author Jean-Aymeric DIET jadiet@cesi.fr
- * @version 1.0
+ * 
  */
 package main;
 
@@ -30,10 +29,15 @@ public abstract class Main {
      */
 	 public static void main(final String[] args) throws SQLException, IOException {
 	    	
-	    	String idToAsk= JOptionPane.showInputDialog("Hello ! Please input id of the map : ", 1);
-	        int idAsked = Integer.parseInt(idToAsk);
-	        
-	    	final IModel model = new Model(idAsked);
+	    	/*String idToAsk= JOptionPane.showInputDialog("Hello ! Please input id of the map : ", 1);
+	        int idAsked = Integer.parseInt(idToAsk);*/
+		 Object[] levelchoice = {1, 2, 3, 4, 5, 6};
+			
+			int level = (int)JOptionPane.showInputDialog(null, "Choose your level ", "Boulderdash", JOptionPane.QUESTION_MESSAGE, null, levelchoice, levelchoice[0]);
+			
+			JOptionPane.showMessageDialog(null, "Vous avez choisi le niveau " + level, null, JOptionPane.INFORMATION_MESSAGE);
+			
+	    	final IModel model = new Model(level);
 	    	final View view = new View(model.getMap(), model.getCharacter(), model.getMap().getPawns());
 	        final IController controller = new Controller(view, model);
 	        view.setOrderPerformer(controller.getOrderPeformer());

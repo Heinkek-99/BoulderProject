@@ -4,8 +4,6 @@ import java.sql.CallableStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import entity.Entity;
-
 /**
  * The Class DAOEntity.
  *
@@ -14,7 +12,7 @@ import entity.Entity;
  * @param <E>
  *          the element type
  */
-abstract class DAOEntity<E extends Entity> {
+abstract class DAOEntity {
 
 	/** The connection. */
 //	private final Connection connection;
