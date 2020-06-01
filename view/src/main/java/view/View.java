@@ -28,7 +28,7 @@ import model.IMobile;
 	public class View implements IView, Runnable, KeyListener {
 		
 		/** The Constant squareSize. */
-		private static final int squareSize = Toolkit.getDefaultToolkit().getScreenSize().width / 20;
+		private static final int squareSize = Toolkit.getDefaultToolkit().getScreenSize().width / 30;
 
 		/** The map. */
 		private IMap map = null;
