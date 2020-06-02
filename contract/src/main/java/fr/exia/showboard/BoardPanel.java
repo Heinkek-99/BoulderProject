@@ -104,6 +104,9 @@ class BoardPanel extends JPanel implements Observer {
     @Override
     public final void paintComponent(final Graphics graphics) {
 
+       	if(this.getDisplayFrame() == null)
+			return;
+       	
         final Map<String, ArrayList<IPawn>> mapPawn = this.createMapPawn();
 
         for (int x = this.getCornerMinX(); x <= this.getCornerMaxX(); x++) {
@@ -389,7 +392,8 @@ class BoardPanel extends JPanel implements Observer {
      * Gets the corner min X.
      *
      * @return the corner min X
-     */private int getCornerMinX() {
+     */
+    private int getCornerMinX() {
         return this.getDisplayFrame().x;
     }
 
