@@ -19,7 +19,7 @@ import model.Sprite;
  */
 public class Character extends Mobile{
 
-	private static final Sprite sprite = new Sprite('H', Sprite.characterTileSet, new Rectangle(16, 0, 16, 16));
+	private static final Sprite sprite = new Sprite('H', Sprite.characterTileSet, new Rectangle(0, 0, 16, 16));
 
 	private static final Sprite spriteTurnLeft = new Sprite('H', Sprite.characterTileSet,
 			new Rectangle(16, 16, 16, 16));
@@ -32,7 +32,7 @@ public class Character extends Mobile{
 	private static final Sprite spriteTurnDown = new Sprite('H', Sprite.characterTileSet,
 			new Rectangle(64, 16, 16, 16));
 
-	private static final Sprite spriteDie = new Sprite('H', Sprite.characterTileSet, new Rectangle(64, 0, 16, 16));
+	private static final Sprite spriteDie = new Sprite('H', Sprite.characterTileSet, new Rectangle(0, 64, 16, 16));
 
 
 	public Character(final int x, final int y, final IMap map) throws IOException {
